@@ -1,0 +1,67 @@
+{% extends "osn.html" %}
+
+{% block content %}
+<form class="form-inline" method="POST" action="/uchenikka">
+    <style>
+        .input-group-addon{
+            color: green;
+            position: absolute;
+            top: 10%;
+            right: 20%
+        }
+        .selectpicker-form-control{
+            position: fixed;
+            color: blue;
+            top: 20%;
+            left: 10%;
+            font-size: 30px;
+        }
+        .btn{
+            position: fixed;
+            color: red;
+            top: 20%;
+            right: 20%;
+            background-color: yellow;
+            font-size: 30px;
+        }
+        .tab{
+        position: fixed;
+        top: 30%;
+        left: 30%;
+        }
+        .kluch{
+        color: orange;
+        font-size: 30px;
+        }
+        .str{
+        color: red;
+        font-size: 25px;
+        }
+        #polosa{
+        overflow-y: hiden;
+        }
+    </style>
+    <h1 class="input-group-addon">{{name}}, {{klass}}</h1> <br>
+    <select name="comp_select" class="selectpicker-form-control">
+        {% for o in data %}
+        <option value="{{ o.name }}">{{ o.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn">Получить таблицу с оценками</button>
+    <div id="polosa" class="table-wrapper">
+        <table border="1" class="tab">
+            <tr class="kluch">
+                <th>Оценка</th>
+                <th>Дата получения</th>
+            </tr>
+            {% for o in ocenki %}
+            <tr class="str">
+                <td>{{o.appraisals}}</td>
+                <td>{{o.date}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <br>
+</form>
+{% endblock %}

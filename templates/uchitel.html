@@ -1,0 +1,12 @@
+{% extends "osn.html" %}
+
+{% block content %}
+<style>
+            .input-group-addon{
+            color: green;
+            }
+</style>
+<h1 class="input-group-addon">{{name}}, {{pred}}</h1> <br>
+<a class="btn btn-secondary" href="/uchitel/vistav-oc">Выставление оценок</a>
+<a class="btn btn-primary" href="/uchitel/prosm-oc">Просмотр оценок учеников</a>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "osn.html" %}
+
+{% block content %}
+<style>
+            .selectpicker-form-control{
+            position: fixed;
+            top: 20%;
+            left: 10%;
+            font-size: 30px;
+            color: red;
+            }
+            .btnka{
+            position: fixed;
+            top: 20%;
+            left: 25%;
+            font-size: 25px;
+            background-color: yellow;
+            color: red;
+            }
+            h1{
+            color: green;
+            }
+            .selectpicker-form-controll{
+            position: fixed;
+            top: 27%;
+            left: 10%;
+            font-size: 30px;
+            color: red;
+            }
+            .btnkaa{
+            position: fixed;
+            top: 27%;
+            left: 33%;
+            font-size: 25px;
+            background-color: yellow;
+            color: red;
+            }
+            .tab{
+            position: fixed;
+            top: 27%;
+            left: 57%;
+            font-size: 25px;
+            background-color: yellow;
+            color: red;
+            }
+</style>
+<form id="vsocuch" method="POST" action="/uchitel/prosm-oc/table">
+    <h1 class="input-group-addon">{{name}}, {{pred}}</h1>
+    <select id="uch" name="comp_select" class="selectpicker-form-control">
+        {% for o in uch %}
+        <option value="{{ o.name }}">{{ o.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btnka">Получить учеников этого класса</button>
+</form>
+{% endblock %}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <title>{{title}}</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <h1 class="navbar-brand">Электронный дневник</h1>
+        {% if current_user.is_authenticated %}
+        <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
+        {% endif %}
+    </nav>
+</header>
+<!-- Begin page content -->
+<main role="main" class="container">
+    <style>
+            .input-group-addon{
+            color: green;
+            }
+            .selectpicker-form-control{
+            position: fixed;
+            top: 20%;
+            left: 10%;
+            font-size: 30px;
+            color: red;
+            }
+            .btn{
+            position: fixed;
+            top: 20%;
+            left: 20%;
+            font-size: 25px;
+            background-color: yellow;
+            color: red;
+            }
+    </style>
+    <form class="form-inline" method="POST" action="/uchitel/vistav-oc/sp-uch">
+        <h1 class="input-group-addon">{{name}}, {{pred}}</h1>
+        <select name="comp_select" class="selectpicker-form-control">
+            {% for o in data %}
+            <option value="{{ o.name }}">{{ o.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn">Загрузить учеников этого класса</button>
+    </form>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

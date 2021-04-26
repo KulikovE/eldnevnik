@@ -1,0 +1,36 @@
+{% extends "osn.html" %}
+
+{% block content %}
+<form class="form-inline" method="POST" action="/uchenikka">
+    <style>
+        .input-group-addon{
+            color: green;
+            position: absolute;
+            top: 10%;
+            right: 20%
+        }
+        .selectpicker-form-control{
+            position: fixed;
+            color: blue;
+            top: 20%;
+            left: 10%;
+            font-size: 30px;
+        }
+        .btn{
+            position: fixed;
+            color: red;
+            top: 20%;
+            right: 20%;
+            background-color: yellow;
+            font-size: 30px;
+        }
+    </style>
+    <h1 class="input-group-addon">{{name}}, {{klass}}</h1> <br>
+    <select name="comp_select" class="selectpicker-form-control">
+        {% for o in data %}
+        <option value="{{ o.name }}">{{ o.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn">Получить таблицу с оценками</button>
+</form>
+{% endblock %}

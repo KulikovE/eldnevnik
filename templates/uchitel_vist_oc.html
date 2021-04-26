@@ -1,0 +1,55 @@
+{% extends "uchitel_vist.html" %}
+
+{% block content %}
+<style>
+            .date-kalend{
+            position: fixed;
+            top: 37%;
+            left: 10%;
+            font-size: 30px;
+            color: red;
+            }
+            #uch{
+            position: fixed;
+            top: 37%;
+            left: 35%;
+            font-size: 25px;
+            color: red;
+            }
+            #klass{
+            position: fixed;
+            top: 30%;
+            left: 25%;
+            }
+            .oc{
+            position: fixed;
+            top: 37%;
+            left: 70%;
+            }
+            .btnka{
+            position: fixed;
+            top: 45%;
+            left: 50%;
+            font-size: 25px;
+            background-color: yellow;
+            color: red;
+            }
+</style>
+<form id="vsocuch" method="POST" action="/uchitel/vistav-oc/saveoc">
+    <h1 id="klass">{{klass}} класс</h1>
+    <input type="date" name="calendar" class="date-kalend" value="{{kalend}}">
+    <select id="uch" name="comp_select" class="selectpicker-form-control">
+        {% for o in uch %}
+        <option value="{{ o.name }}">{{ o.name }}</option>
+        {% endfor %}
+    </select>
+    <select name="ocenka" class="oc">
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="ОТ">ОТ</option>
+    </select>
+    <button type="submit" class="btnka">Сохранить оценки</button>
+</form>
+{% endblock %}
