@@ -3,7 +3,7 @@ from flask import redirect
 import datetime
 from data import db_session
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-
+import os
 from data.lessons import Lesson
 from data.klass import Klass
 from data.login import LoginForm
@@ -19,7 +19,8 @@ login_manager.init_app(app)
 
 def main():
     db_session.global_init("db/dnevnik.db")
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 @login_manager.user_loader
